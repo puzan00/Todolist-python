@@ -4,8 +4,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def home(request):
-    todos=Todo.objects.all()
-    return render(request,'home.html',{'todos':todos})
+        todos = Todo.objects.filter(author=request.user)
+        return render(request, 'home.html', {'todos': todos})
+   
 @login_required
 def add(request):
     if request.method =='GET':
