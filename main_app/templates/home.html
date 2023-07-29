@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content%} 
+<h2 style="text-align:center" >TODO-LIST</h2>
+<hr>
+{% if todos%}
+{% for todo in todos%}
+<div class="text" style="text-align:center;">
+    {% if todo.is_completed %}
+    <del><h4 style="text-align:center">{{todo.title}}</h4></del>
+    <del><p style="text-align:center">{{todo.description}}</p></del>
+    {% else %}
+    <h4 style="text-align:center">{{todo.title}}</h4>
+    <p style="text-align:center">{{todo.description}}</p>
+    {% endif %}
+   
+        {{todo.author.username}}-{{todo.date_posted}}
+        {% if todo.is_completed %}
+        <a href="{% url 'mark-complete' id=todo.id %}" class="icon-link"><i class="fa-solid fa-square-check fa-xl"></i></a>
+        {% else %}
+        <a href="{% url 'mark-complete' id=todo.id %}" class="icon-link"><i class="fa-regular fa-square-check fa-xl"></i></a>
+        {% endif %}
+
+        <a href="{% url 'edit' id=todo.id %}" class="icon-link"><i class="fa-regular fa-pen-to-square fa-lg"></i></a>
+        <a href="{% url 'delete' id=todo.id %}" class="icon-link"><i class="fa-solid fa-trash-can fa-lg"></i></a>
+        
+
+</div>
+<hr>
+
+{% endfor%}
+{% else %}
+<div style="text-align:center";>
+    <h1>No todo item found.</h1>
+</div>
+{% endif %}
+<div class="item" style="text-align:center">
+    <a href="{% url 'add' %}" class="btn btn-primary">ADD</a>
+    {% if todos%}
+    <a href="{% url 'delete-all' %}" class="btn btn-danger">DELETE ALL</a>
+    {% endif %}
+</div>
+{% endblock content%}

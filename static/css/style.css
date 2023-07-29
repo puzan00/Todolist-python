@@ -1,0 +1,34 @@
+body {
+    background-image: url("{% static 'images/n.jpg' %}");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background for the todo list container */
+    border: 2px solid #e3e4e4; /* Blue border for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  .my-form input{
+    width:800px;
+  }
+.icon-link {
+    margin-right: 6px; 
+}
+
+  
+  .item a {
+    margin-right: 5px;
+  }
+
+h2 {
+  text-align: center;
+  color: white; /* Black text color for the h2 */
+  background-color: #8a2be2; /* Purple background color for the h2 */
+  padding: 10px 20px; /* Add padding to make the h2 look nice */
+  border-radius: 6px; /* Add rounded corners for a nicer appearance */
+}
